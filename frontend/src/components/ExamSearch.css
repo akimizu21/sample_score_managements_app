@@ -1,0 +1,70 @@
+.exam-search h1 {
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.search-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-filters {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.filter-group {
+  flex: 1;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.filter-group input,
+.filter-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.search-filters button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 30px;
+}
+
+.search-filters button:hover {
+  background-color: #2980b9;
+}
+
+.results-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.results-section h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.no-results {
+  text-align: center;
+  color: #7f8c8d;
+  padding: 40px;
+}
+
+.results-table {
+  margin-top: 10px;
+}

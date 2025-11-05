@@ -1,0 +1,144 @@
+.student-list h1 {
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+.search-section {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-filters {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+}
+
+.search-filters input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  flex: 1;
+}
+
+.search-filters button {
+  background-color: #3498db;
+  color: white;
+}
+
+.search-filters button:hover {
+  background-color: #2980b9;
+}
+
+.add-btn {
+  background-color: #27ae60;
+  color: white;
+  padding: 10px 20px;
+  white-space: nowrap;
+}
+
+.add-btn:hover {
+  background-color: #229954;
+}
+
+.student-table {
+  margin-top: 20px;
+}
+
+.view-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 6px 12px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.view-btn:hover {
+  background-color: #2980b9;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.modal .form-group {
+  margin-bottom: 15px;
+}
+
+.modal .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.modal .form-group input,
+.modal .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.modal-actions button {
+  padding: 10px 20px;
+}
+
+.modal-actions button[type="button"] {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.modal-actions button[type="button"]:hover {
+  background-color: #7f8c8d;
+}
+
+.modal-actions button[type="submit"] {
+  background-color: #27ae60;
+  color: white;
+}
+
+.modal-actions button[type="submit"]:hover {
+  background-color: #229954;
+}
