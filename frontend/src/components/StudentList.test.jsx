@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect, vi } from 'vitest'
-import StudentList from './StudentList'
+import StudentList from './StudentsList'
 
 describe('StudentList', () => {
   it('生徒一覧が表示される', () => {
