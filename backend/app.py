@@ -7,9 +7,14 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:root@localhost:5432/student_management'
+# Database configuration - 環境変数から取得できるように修正
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
+    'DATABASE_URL',
+    'postgresql://postgres:root@localhost:5432/student_management'
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['TESTING'] = os.getenv('FLASK_ENV') == 'testing'
+
 db = SQLAlchemy(app)
 
 # Models
@@ -42,6 +47,11 @@ class Score(db.Model):
     deviation_value = db.Column(db.Float)
     judgment = db.Column(db.String(10))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+
+# ヘルスチェック用エンドポイントを追加（テスト用）
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'ok'}), 200
 
 # Routes
 @app.route('/api/students', methods=['GET', 'POST'])
@@ -232,9 +242,8 @@ def import_scores():
     db.session.commit()
     return jsonify({'message': f'{imported_count} scores imported successfully'})
 
-# Initialize database
-with app.app_context():
-    db.create_all()
-
+# Initialize database - テスト環境では自動作成しない
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True, port=5000)
