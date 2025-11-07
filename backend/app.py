@@ -5,7 +5,13 @@ from datetime import datetime
 import os
 
 app = Flask(__name__)
-CORS(app)
+
+# CORS設定 - 一旦すべて許可（後で修正）
+CORS(app, resources={
+    r"/api/*": {
+        "origins": "*"  # 後で具体的なURLに変更
+    }
+})
 
 # Database configuration - 環境変数から取得できるように修正
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv(
