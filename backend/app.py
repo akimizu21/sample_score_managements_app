@@ -62,6 +62,16 @@ class Score(db.Model):
 def health_check():
     return jsonify({'status': 'ok'}), 200
 
+# データベース初期化エンドポイント
+@app.route('/api/init-db', methods=['POST'])
+def init_db():
+    """データベースを初期化"""
+    try:
+        db.create_all()
+        return jsonify({'message': 'Database initialized successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
 # Routes
 @app.route('/api/students', methods=['GET', 'POST'])
 def handle_students():
@@ -250,6 +260,10 @@ def import_scores():
     
     db.session.commit()
     return jsonify({'message': f'{imported_count} scores imported successfully'})
+
+# アプリケーション起動時にテーブルを作成
+with app.app_context():
+    db.create_all()
 
 # Initialize database - テスト環境では自動作成しない
 if __name__ == '__main__':
