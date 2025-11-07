@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './StudentsList.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function StudentList() {
   const [students, setStudents] = useState([]);
@@ -24,7 +24,7 @@ function StudentList() {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get(`${API_URL}/students`);
+      const response = await axios.get(`${API_URL}/api/students`);
       setStudents(response.data);
     } catch (error) {
       console.error('Error fetching students:', error);
@@ -37,7 +37,7 @@ function StudentList() {
       if (searchName) params.append('name', searchName);
       if (searchUniversity) params.append('university', searchUniversity);
       
-      const response = await axios.get(`${API_URL}/search/students?${params}`);
+      const response = await axios.get(`${API_URL}/api/search/students?${params}`);
       setStudents(response.data);
     } catch (error) {
       console.error('Error searching students:', error);
@@ -47,7 +47,7 @@ function StudentList() {
   const handleAddStudent = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`${API_URL}/students`, newStudent);
+      await axios.post(`${API_URL}/api/students`, newStudent);
       setShowModal(false);
       setNewStudent({
         student_number: '',

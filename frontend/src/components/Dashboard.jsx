@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function Dashboard() {
   const [stats, setStats] = useState({
@@ -18,9 +18,9 @@ function Dashboard() {
   const fetchDashboardData = async () => {
     try {
       const [studentsRes, examsRes, scoresRes] = await Promise.all([
-        axios.get(`${API_URL}/students`),
-        axios.get(`${API_URL}/exams`),
-        axios.get(`${API_URL}/scores`)
+        axios.get(`${API_URL}/api/students`),     // /api を追加
+        axios.get(`${API_URL}/api/exams`),        // /api を追加
+        axios.get(`${API_URL}/api/scores`)        // /api を追加
       ]);
 
       setStats({

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import './StudentDetail.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function StudentDetail() {
   const { id } = useParams();
@@ -18,7 +18,7 @@ function StudentDetail() {
 
   const fetchStudentDetail = async () => {
     try {
-      const response = await axios.get(`${API_URL}/students/${id}`);
+      const response = await axios.get(`${API_URL}/api/students/${id}`);
       setStudent(response.data);
       
       // グラフ用データの整形
@@ -36,7 +36,7 @@ function StudentDetail() {
   const handleDelete = async () => {
     if (window.confirm('この生徒を削除してもよろしいですか?')) {
       try {
-        await axios.delete(`${API_URL}/students/${id}`);
+        await axios.delete(`${API_URL}/api/students/${id}`);
         alert('生徒を削除しました');
         navigate('/students');
       } catch (error) {

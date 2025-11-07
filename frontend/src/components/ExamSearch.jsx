@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ExamSearch.css';
 
-const API_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function ExamSearch() {
   const [year, setYear] = useState('');
@@ -17,7 +17,7 @@ function ExamSearch() {
 
   const fetchExams = async () => {
     try {
-      const response = await axios.get(`${API_URL}/exams`);
+      const response = await axios.get(`${API_URL}/api/exams`);
       setExams(response.data);
     } catch (error) {
       console.error('Error fetching exams:', error);
@@ -30,7 +30,7 @@ function ExamSearch() {
       if (year) params.append('year', year);
       if (examName) params.append('exam_name', examName);
       
-      const response = await axios.get(`${API_URL}/scores?${params}`);
+      const response = await axios.get(`${API_URL}/api/scores?${params}`);
       let results = response.data;
       
       // 大学名でフィルタリング
