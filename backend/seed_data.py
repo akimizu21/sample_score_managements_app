@@ -8,7 +8,7 @@
 import requests
 import json
 
-API_BASE_URL = "http://localhost:5000/api"
+API_URL = "http://localhost:5000/api"
 
 def create_students():
     """生徒のサンプルデータを作成"""
@@ -54,7 +54,7 @@ def create_students():
     created_students = []
     for student in students:
         try:
-            response = requests.post(f"{API_BASE_URL}/students", json=student)
+            response = requests.post(f"{API_URL}/students", json=student)
             if response.status_code == 201:
                 created_student = response.json()
                 created_students.append(created_student)
@@ -95,7 +95,7 @@ def create_exams():
     created_exams = []
     for exam in exams:
         try:
-            response = requests.post(f"{API_BASE_URL}/exams", json=exam)
+            response = requests.post(f"{API_URL}/exams", json=exam)
             if response.status_code == 201:
                 created_exam = response.json()
                 created_exams.append(created_exam)
@@ -142,7 +142,7 @@ def create_scores(students, exams):
             }
             
             try:
-                response = requests.post(f"{API_BASE_URL}/scores", json=score)
+                response = requests.post(f"{API_URL}/scores", json=score)
                 if response.status_code == 201:
                     count += 1
                     print(f"✓ {student['name']} - {exam['name']}: {points}点 (偏差値{deviation_value}, 判定{judgment})")
@@ -161,7 +161,7 @@ def main():
     
     try:
         # APIサーバーが起動しているか確認
-        response = requests.get(f"{API_BASE_URL}/students")
+        response = requests.get(f"{API_URL}/students")
         print("✓ APIサーバーに接続しました\n")
     except requests.exceptions.ConnectionError:
         print("✗ APIサーバーに接続できません")
