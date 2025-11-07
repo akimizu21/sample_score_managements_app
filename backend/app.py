@@ -9,7 +9,10 @@ app = Flask(__name__)
 # CORS設定 - 一旦すべて許可（後で修正）
 CORS(app, resources={
     r"/api/*": {
-        "origins": "*"  # 後で具体的なURLに変更
+        "origins": [
+            "http://localhost:5173",  # 開発環境
+            "https://student-management-frontend-owyk.onrender.com"  # 本番環境（実際のURLに変更）
+        ]
     }
 })
 
